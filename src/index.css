@@ -7,7 +7,7 @@
     }
 }
 
-.hero-gradient {
+.section-gradient {
     background: linear-gradient(180deg,
             hsl(222 44% 10%) 0%,
             hsl(222 47% 6%) 100%);
