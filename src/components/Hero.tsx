@@ -38,7 +38,7 @@ const Hero: React.FC = () => {
     }, [displayed, deleting, roleIndex]);
 
     return (
-        <section className="min-h-screen flex items-center bg-[hsl(222,47%,6%)] pt-20">
+        <section className="min-h-screen flex items-center hero-gradient pt-20">
             <div className="max-w-7xl mx-auto px-6 flex flex-col-reverse lg:flex-row items-center gap-10 lg:gap-12 w-full">
                 {/* Text */}
                 <div className="flex-1 text-center lg:text-left">
