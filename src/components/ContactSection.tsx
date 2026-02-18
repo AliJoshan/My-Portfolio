@@ -24,7 +24,7 @@ const ContactSection = () => {
         <section
             id="contact"
             ref={ref}
-            className="py-28 section-gradient"
+            className="py-28 bg-[hsl(222,47%,6%)]"
         >
             <div className="mx-auto max-w-2xl px-6 text-center">
                 <h2
