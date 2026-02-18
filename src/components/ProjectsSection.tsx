@@ -1,6 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import { ExternalLink, Github } from "lucide-react";
 
+import progressionImg from "../assets/images/progression.png";
+import careerHubImg from "../assets/images/careerhub.png";
+import quizGameImg from "../assets/images/quiz-app.png";
+
+
 interface Project {
     title: string;
     description: string;
@@ -15,61 +20,61 @@ interface Project {
 
 const projects: Project[] = [
     {
-        title: "Analytics Dashboard",
+        title: "Progression",
         description:
-            "A real-time analytics dashboard with data visualization and responsive charts.",
-        image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200&auto=format&fit=crop",
-        tags: ["React", "TypeScript", "Recharts", "Tailwind CSS"],
+            "A progress tracking web app that helps users measure growth through a visual dashboard.",
+        image: progressionImg,
+        tags: ["HTML", "CSS", "JavaScript"],
         liveUrl: "#",
         githubUrl: "#",
         overview:
-            "A comprehensive analytics dashboard designed to visualize complex datasets using interactive charts and real-time updates.",
+            "Progression is a front-end focused progress tracker built with vanilla web technologies. It allows users to track habits or goals over time using a clean dashboard-style UI.",
         features: [
-            "Interactive charts & graphs",
-            "Real-time data updates",
-            "Responsive layout",
-            "Dark theme support",
+            "Progress tracking dashboard",
+            "Visual indicators for growth",
+            "Simple and intuitive UI",
+            "Fully responsive layout",
         ],
         challenges:
-            "Optimizing chart re-renders while maintaining smooth animations and performance across devices.",
+            "Designing a scalable dashboard structure using plain JavaScript while keeping the UI responsive and maintainable.",
     },
     {
-        title: "E-Commerce Store",
+        title: "CareerHub",
         description:
-            "A modern e-commerce front-end with product listing, cart, and checkout flow.",
-        image: "https://images.unsplash.com/photo-1557821552-17105176677c?q=80&w=1200&auto=format&fit=crop",
-        tags: ["React", "TypeScript", "REST API", "CSS Modules"],
+            "A modern job board platform that fetches and displays job listings from an external API.",
+        image: careerHubImg,
+        tags: ["React", "TypeScript", "Tailwind CSS", "API"],
         liveUrl: "#",
         githubUrl: "#",
         overview:
-            "A fully responsive e-commerce interface with product browsing, cart management, and a streamlined checkout experience.",
+            "CareerHub is a job board application built with React and TypeScript. It consumes an external API to display real-time job listings with clean UI, filtering, and structured job details.",
         features: [
-            "Product search & filtering",
-            "Shopping cart",
-            "Checkout flow",
+            "Job listings from external API",
+            "Detailed job pages",
+            "Saved jobs functionality",
+            "Responsive and accessible UI",
+        ],
+        challenges:
+            "Handling API data reliably, managing loading and error states, and structuring components for scalability.",
+    },
+    {
+        title: "Quiz Game",
+        description:
+            "An interactive quiz game that fetches questions dynamically from an API.",
+        image: quizGameImg,
+        tags: ["React", "Tailwind CSS", "API"],
+        liveUrl: "#",
+        githubUrl: "#",
+        overview:
+            "A fun and interactive quiz game built with React. Questions are fetched dynamically from an external API, allowing for varied quiz sessions every time.",
+        features: [
+            "Dynamic quiz questions",
+            "Score tracking",
+            "Instant feedback on answers",
             "Responsive design",
         ],
         challenges:
-            "Managing complex cart state across components while keeping UI behavior consistent.",
-    },
-    {
-        title: "Task Manager",
-        description:
-            "A kanban-style task manager with drag-and-drop and collaboration features.",
-        image: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?q=80&w=1200&auto=format&fit=crop",
-        tags: ["React", "TypeScript", "Vite", "Tailwind CSS"],
-        liveUrl: "#",
-        githubUrl: "#",
-        overview:
-            "A productivity-focused task manager with kanban boards and drag-and-drop task organization.",
-        features: [
-            "Kanban board layout",
-            "Drag-and-drop tasks",
-            "Status tracking",
-            "Team views",
-        ],
-        challenges:
-            "Implementing smooth drag-and-drop interactions with reliable state synchronization.",
+            "Managing quiz state transitions cleanly and ensuring smooth UX while handling asynchronous data fetching.",
     },
 ];
 
