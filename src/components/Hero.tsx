@@ -38,13 +38,21 @@ const Hero: React.FC = () => {
     }, [displayed, deleting, roleIndex]);
 
     return (
-        <section className="min-h-screen flex items-center section-gradient pt-20">
-            <div className="max-w-7xl mx-auto px-6 flex flex-col-reverse lg:flex-row items-center gap-10 lg:gap-12 w-full">
-                {/* Text */}
+        <section className="relative min-h-screen flex items-center pt-20 overflow-hidden">
+            <div className="absolute inset-0 -z-10 bg-[hsl(222,47%,6%)]">
+                <div
+                    className="absolute inset-0"
+                    style={{
+                        background:
+                            "radial-gradient(800px circle at 20% 20%, hsl(199 89% 58% / 0.15), transparent 40%), radial-gradient(600px circle at 80% 30%, hsl(199 89% 58% / 0.08), transparent 45%)",
+                    }}
+                />
+                <div className="absolute bottom-0 left-0 right-0 h-40 bg-linear-to-b from-transparent to-[hsl(222,47%,6%)]" />
+            </div>
+
+            <div className="max-w-7xl mx-auto px-6 flex flex-col-reverse lg:flex-row items-center gap-12 w-full">
                 <div className="flex-1 text-center lg:text-left">
-                    <p className="text-gray-400 text-lg mb-2">
-                        I'm
-                    </p>
+                    <p className="text-gray-400 text-lg mb-2">I'm</p>
 
                     <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-gray-100 mb-4 leading-tight">
                         Ali Anas Joshan
@@ -74,8 +82,9 @@ const Hero: React.FC = () => {
                 </div>
 
                 {/* Image */}
-                <div className="shrink-0">
-                    <div className="w-60 h-60 sm:w-72 sm:h-72 lg:w-88 lg:h-88 rounded-full overflow-hidden border-4 border-[hsl(199,89%,58%)]/30">
+                <div className="shrink-0 relative">
+                    <div className="absolute inset-0 rounded-full blur-2xl bg-[hsl(199,89%,58%)]/20" />
+                    <div className="relative w-60 h-60 sm:w-72 sm:h-72 lg:w-88 lg:h-88 rounded-full overflow-hidden border-4 border-[hsl(199,89%,58%)]/30">
                         <img
                             src="src/assets/images/Me.jpeg"
                             alt="Ali Anas Joshan"

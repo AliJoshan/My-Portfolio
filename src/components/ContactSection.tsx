@@ -62,7 +62,7 @@ const ContactSection = () => {
                   bg-[hsl(222,44%,9%)]
                   border border-white/5
                   hover:border-[hsl(199,89%,58%)]/40
-                  hover:shadow-[0_0_32px_hsl(199_89%_58%_/_0.15)]
+                  hover:shadow-[0_0_32px_hsl(199_89%_58%/0.15)]
                   transition-all duration-500
                   ${visible
                                         ? "opacity-100 translate-y-0"
