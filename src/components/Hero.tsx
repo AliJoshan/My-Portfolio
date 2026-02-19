@@ -62,7 +62,7 @@ const Hero: React.FC = () => {
                             "radial-gradient(800px circle at 20% 20%, hsl(199 89% 58% / 0.15), transparent 40%), radial-gradient(600px circle at 80% 30%, hsl(199 89% 58% / 0.08), transparent 45%)",
                     }}
                 />
-                <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-b from-transparent to-[hsl(222,47%,6%)]" />
+                <div className="absolute bottom-0 left-0 right-0 h-40 bg-linear-to-b from-transparent to-[hsl(222,47%,6%)]" />
             </div>
 
             <div className="max-w-7xl mx-auto px-6 flex flex-col-reverse lg:flex-row items-center gap-12 w-full">
