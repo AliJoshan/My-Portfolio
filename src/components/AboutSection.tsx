@@ -48,13 +48,11 @@ const AboutSection = () => {
                     </p>
 
                     <p className="text-gray-400 leading-relaxed mb-5">
-                        I focus on building structured front-end applications and strengthening my
-                        foundations in software engineering.
+                        I’m currently a second-semester BCS student at Moraa Education Complex, strengthening my academic foundation in computer science while continuing practical development.
                     </p>
 
                     <p className="text-gray-400 leading-relaxed">
-                        My goal is to become a remote-ready engineer capable of building scalable products
-                        at a global level.
+                        My goal is to become a full stack developer focused on building scalable, impactful products that solve real-world problems at a global level.
                     </p>
                 </div>
             </div>
