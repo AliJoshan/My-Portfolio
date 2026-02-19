@@ -22,6 +22,7 @@ const categories = [
             { name: "JavaScript (ES6+)", icon: Braces },
             { name: "TypeScript", icon: Code2 },
             { name: "React", icon: Atom },
+            { name: "Tailwind", icon: Zap }, // new skill added
         ],
     },
     {
