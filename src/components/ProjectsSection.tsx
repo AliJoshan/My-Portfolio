@@ -82,6 +82,13 @@ const ProjectsSection = () => {
     const ref = useRef<HTMLDivElement>(null);
     const [visible, setVisible] = useState(false);
     const [selected, setSelected] = useState<Project | null>(null);
+    const [showModal, setShowModal] = useState(false);
+
+    const closeModal = () => {
+        setShowModal(false);
+        setTimeout(() => setSelected(null), 300); // match transition duration
+    };
+
 
     useEffect(() => {
         const observer = new IntersectionObserver(
@@ -94,6 +101,28 @@ const ProjectsSection = () => {
         if (ref.current) observer.observe(ref.current);
         return () => observer.disconnect();
     }, []);
+
+    useEffect(() => {
+        if (selected) {
+            document.body.style.overflow = "hidden";
+        } else {
+            document.body.style.overflow = "auto";
+        }
+
+        return () => {
+            document.body.style.overflow = "auto";
+        };
+    }, [selected]);
+
+    useEffect(() => {
+        const handleEsc = (e: KeyboardEvent) => {
+            if (e.key === "Escape") closeModal();
+        };
+
+        if (selected) window.addEventListener("keydown", handleEsc);
+        return () => window.removeEventListener("keydown", handleEsc);
+    }, [selected]);
+
 
     return (
         <section id="projects" className="py-28 section-gradient" ref={ref}>
@@ -114,13 +143,16 @@ const ProjectsSection = () => {
                     {projects.map((project, idx) => (
                         <div
                             key={project.title}
-                            onClick={() => setSelected(project)}
+                            onClick={() => {
+                                setSelected(project);
+                                requestAnimationFrame(() => setShowModal(true));
+                            }}
                             style={{ transitionDelay: `${200 + idx * 100}ms` }}
                             className={`group cursor-pointer rounded-2xl overflow-hidden
                 bg-[hsl(222,44%,9%)]
                 border border-white/5
                 hover:border-[hsl(199,89%,58%)]/30
-                hover:shadow-[0_0_32px_hsl(199_89%_58%_/_0.15)]
+                hover:shadow-[0_0_32px_hsl(199_89%_58%/0.15)]
                 transition-all duration-500
                 ${visible
                                     ? "opacity-100 translate-y-0"
@@ -183,12 +215,20 @@ const ProjectsSection = () => {
             {/* Modal */}
             {selected && (
                 <div
-                    onClick={() => setSelected(null)}
-                    className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center px-4"
+                    onClick={closeModal}
+                    className={`fixed inset-0 z-50 flex items-center justify-center px-4
+      bg-black/70 backdrop-blur-sm
+      transition-opacity duration-300
+      ${showModal ? "opacity-100" : "opacity-0"}
+    `}
                 >
                     <div
                         onClick={(e) => e.stopPropagation()}
-                        className="max-w-2xl w-full bg-[hsl(222,44%,9%)] border border-white/5 rounded-2xl overflow-hidden animate-fade-up"
+                        className={`max-w-2xl w-full bg-[hsl(222,44%,9%)]
+        border border-white/5 rounded-2xl overflow-hidden
+        transform transition-all duration-300
+        ${showModal ? "scale-100 translate-y-0 opacity-100" : "scale-95 translate-y-4 opacity-0"}
+      `}
                     >
                         <img
                             src={selected.image}
@@ -235,7 +275,7 @@ const ProjectsSection = () => {
                                     GitHub
                                 </a>
                                 <button
-                                    onClick={() => setSelected(null)}
+                                    onClick={closeModal}
                                     className="ml-auto text-gray-400 hover:text-gray-100 transition text-sm"
                                 >
                                     Close
