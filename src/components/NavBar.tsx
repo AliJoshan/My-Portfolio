@@ -51,13 +51,15 @@ const Navbar = () => {
                     ))}
                 </ul>
 
-                <button
-                    className="md:hidden text-gray-100"
-                    onClick={() => setMobileOpen((prev) => !prev)}
-                    aria-label="Toggle menu"
-                >
-                    {mobileOpen ? <X size={24} /> : <Menu size={24} />}
-                </button>
+                {!mobileOpen && (
+                    <button
+                        className="md:hidden text-gray-100"
+                        onClick={() => setMobileOpen(true)}
+                        aria-label="Open menu"
+                    >
+                        <Menu size={24} />
+                    </button>
+                )}
             </div>
 
             <div
@@ -74,7 +76,21 @@ const Navbar = () => {
         transform transition-transform duration-300 ${mobileOpen ? "translate-y-0" : "-translate-y-full"
                         }`}
                 >
-                    <ul className="flex flex-col items-center gap-6 py-10">
+                    {/* Close Button */}
+                    <button
+                        onClick={() => setMobileOpen(false)}
+                        aria-label="Close menu"
+                        className="
+    absolute top-4 right-4
+    text-gray-400 hover:text-[hsl(199,89%,58%)]
+    transition-colors
+    active:scale-90
+"
+                    >
+                        <X size={22} />
+                    </button>
+
+                    <ul className="flex flex-col items-center gap-6 py-10 pt-14">
                         {navLinks.map((link) => (
                             <li key={link.href} className="w-full text-center">
                                 <a
@@ -95,7 +111,6 @@ const Navbar = () => {
 
                         <div className="w-12 h-px bg-white/10 my-2" />
 
-                        {/* Optional CTA */}
                         <span className="text-xs text-gray-500 tracking-widest uppercase">
                             Let’s build something great
                         </span>
