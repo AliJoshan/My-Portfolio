@@ -79,8 +79,8 @@ const SkillsSection = () => {
                                 }`}
                             style={{ transitionDelay: `${200 + catIdx * 120}ms` }}
                         >
-                            <div className="mb-5">
-                                <span className="text-sm tracking-wider uppercase text-gray-400 font-medium">
+                            <div className="mb-5 inline-block px-3 py-1 rounded-lg bg-[hsl(199,89%,58%)/10]">
+                                <span className="text-sm tracking-wider uppercase text-[hsl(199,89%,58%)] font-semibold">
                                     {cat.title}
                                 </span>
                                 <div className="w-8 h-0.5 bg-[hsl(199,89%,58%)] mt-2 rounded-full" />
