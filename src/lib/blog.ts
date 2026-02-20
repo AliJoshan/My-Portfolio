@@ -52,3 +52,10 @@ export function getAllBlogs(): BlogMeta[] {
 export function getBlogBySlug(slug: string): Blog | null {
     return allBlogs.find((blog) => blog.meta.slug === slug) || null;
 }
+
+export function getRelatedBlogs(slug: string, limit = 2): BlogMeta[] {
+    return allBlogs
+        .filter(blog => blog.meta.slug !== slug)
+        .slice(0, limit)
+        .map(blog => blog.meta);
+}

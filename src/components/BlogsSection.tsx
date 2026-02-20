@@ -2,6 +2,7 @@ import { useEffect, useRef, useState, useMemo } from "react";
 import { Calendar, ArrowRight } from "lucide-react";
 import { getAllBlogs } from "../lib/blog";
 import type { BlogMeta } from "../lib/blog";
+import { Link } from "react-router-dom";
 
 const BlogsSection = () => {
     const blogs = useMemo<BlogMeta[]>(() => getAllBlogs(), []);
@@ -59,9 +60,9 @@ const BlogsSection = () => {
   `}
                 >
                     {blogs.map((blog, idx) => (
-                        <a
+                        <Link
+                            to={`/blog/${blog.slug}`}
                             key={blog.slug}
-                            href={`/blog/${blog.slug}`}
                             style={{ transitionDelay: `${200 + idx * 120}ms` }}
                             className={`group relative rounded-2xl overflow-hidden
 bg-[linear-gradient(180deg,hsl(222,44%,10%),hsl(222,44%,7%))]
@@ -113,7 +114,7 @@ ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
                                     </span>
                                 </div>
                             </div>
-                        </a>
+                        </Link>
                     ))}
                 </div>
             </div>
