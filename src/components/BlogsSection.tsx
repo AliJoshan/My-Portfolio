@@ -51,12 +51,21 @@ const BlogsSection = () => {
                             href={`/blog/${blog.slug}`}
                             style={{ transitionDelay: `${200 + idx * 120}ms` }}
                             className={`group relative rounded-2xl overflow-hidden
-                bg-[linear-gradient(180deg,hsl(222,44%,10%),hsl(222,44%,7%))]
-                border border-white/5
-                hover:border-[hsl(199,89%,58%)]/30
-                hover:-translate-y-1
-                transition-all duration-500 flex flex-col
-                ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+bg-[linear-gradient(180deg,hsl(222,44%,10%),hsl(222,44%,7%))]
+border border-white/5
+ring-1 ring-inset ring-[hsla(199,89%,58%,0.08)]
+
+before:absolute before:inset-0 before:rounded-2xl
+before:border before:border-transparent
+before:bg-[linear-gradient(135deg,transparent,hsla(199,89%,58%,0.22),transparent)]
+before:opacity-40 before:pointer-events-none
+
+hover:before:opacity-100
+hover:shadow-[0_0_0_1px_hsla(199,89%,58%,0.25),0_12px_40px_-12px_hsla(199,89%,58%,0.25)]
+hover:-translate-y-1
+
+transition-all duration-500 flex flex-col
+${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
                         >
                             <div className="relative h-48 overflow-hidden">
                                 <img
