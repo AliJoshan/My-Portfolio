@@ -5,6 +5,11 @@ import type { BlogMeta } from "../lib/blog";
 
 const BlogsSection = () => {
     const blogs = useMemo<BlogMeta[]>(() => getAllBlogs(), []);
+
+    const blogCount = blogs.length;
+    const isSingle = blogCount === 1;
+    const isDouble = blogCount === 2;
+
     const ref = useRef<HTMLDivElement>(null);
     const [visible, setVisible] = useState(false);
 
@@ -44,7 +49,15 @@ const BlogsSection = () => {
                         }`}
                 />
 
-                <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
+                <div
+                    className={`
+    grid gap-8 max-w-6xl mx-auto
+    md:grid-cols-2
+    ${isSingle ? "lg:grid-cols-1 justify-items-center" : ""}
+    ${isDouble ? "lg:grid-cols-2" : ""}
+    ${blogCount >= 3 ? "lg:grid-cols-3" : ""}
+  `}
+                >
                     {blogs.map((blog, idx) => (
                         <a
                             key={blog.slug}
@@ -65,6 +78,7 @@ hover:shadow-[0_0_0_1px_hsla(199,89%,58%,0.25),0_12px_40px_-12px_hsla(199,89%,58
 hover:-translate-y-1
 
 transition-all duration-500 flex flex-col
+${isSingle ? "max-w-md w-full" : ""}
 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
                         >
                             <div className="relative h-48 overflow-hidden">
