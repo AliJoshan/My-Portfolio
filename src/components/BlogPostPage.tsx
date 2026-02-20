@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { getBlogBySlug, getRelatedBlogs } from "../lib/blog";
 import ReadingProgress from "../components/ReadingProgress";
 import BlogContent from "../components/BlogContent";
@@ -7,7 +7,12 @@ const BlogPostPage = () => {
     const { slug } = useParams();
     const blog = slug ? getBlogBySlug(slug) : undefined;
 
-    if (!blog) return <p className="text-center mt-20 text-gray-400">Blog not found</p>;
+    if (!blog)
+        return (
+            <p className="text-center mt-20 text-gray-400">
+                Blog not found
+            </p>
+        );
 
     const related = getRelatedBlogs(blog.meta.slug);
 
@@ -15,47 +20,96 @@ const BlogPostPage = () => {
         <>
             <ReadingProgress />
 
-            <main className="bg-[hsl(222,47%,6%)] min-h-screen">
-                <div className="max-w-4xl mx-auto px-6 py-20">
+            <main className="min-h-screen bg-[hsl(222,47%,6%)]">
+                <div className="max-w-4xl mx-auto px-6 py-24">
 
-                    {/* Page header (NOT prose) */}
-                    <header className="mb-12">
-                        <h1 className="text-3xl sm:text-4xl font-bold text-gray-100 mb-2">
-                            {blog.meta.title}
-                        </h1>
-                        <p className="text-sm text-gray-400">
-                            {blog.meta.date}
+                    {/* Date */}
+                    <p className="text-sm text-gray-400 mb-4 tracking-wide">
+                        {blog.meta.date}
+                    </p>
+
+                    {/* Title */}
+                    <h1 className="text-4xl sm:text-5xl font-bold text-white leading-tight mb-6">
+                        {blog.meta.title}
+                    </h1>
+
+                    {/* Description */}
+                    {blog.meta.description && (
+                        <p className="text-lg text-gray-400 mb-12 max-w-2xl">
+                            {blog.meta.description}
                         </p>
-                    </header>
+                    )}
 
+                    {/* Hero Image */}
+                    {blog.meta.image && (
+                        <div className="mb-16">
+                            <img
+                                src={blog.meta.image}
+                                alt={blog.meta.title}
+                                className="
+                  w-full
+                  rounded-2xl
+                  border border-white/5
+                  shadow-xl
+                  object-cover
+                "
+                            />
+                        </div>
+                    )}
+
+                    {/* Content */}
                     <BlogContent content={blog.content} />
 
-                    {/* Related blogs */}
+                    {/* Related Articles */}
                     {related.length > 0 && (
-                        <section className="mt-20">
-                            <h2 className="text-2xl font-semibold text-gray-100 mb-6">
+                        <section className="mt-24 border-t border-white/5 pt-16">
+                            <h2 className="text-2xl font-semibold text-white mb-10">
                                 Related Articles
                             </h2>
 
-                            <div className="grid md:grid-cols-2 gap-6">
-                                {related.map(b => (
-                                    <a
+                            <div className="grid md:grid-cols-2 gap-8">
+                                {related.map((b) => (
+                                    <Link
                                         key={b.slug}
-                                        href={`/blog/${b.slug}`}
-                                        className="group rounded-xl overflow-hidden border border-white/5 bg-[hsl(222,44%,8%)] hover:border-[hsl(199,89%,58%)] transition-all p-4"
+                                        to={`/blog/${b.slug}`}
+                                        className="
+                      group
+                      bg-[hsl(222,44%,9%)]
+                      border border-white/5
+                      rounded-2xl
+                      p-5
+                      transition-all
+                      duration-300
+                      hover:border-[hsl(199,89%,58%)]
+                      hover:shadow-lg
+                    "
                                     >
                                         <img
                                             src={b.image}
                                             alt={b.title}
-                                            className="w-full h-36 object-cover rounded-lg mb-4"
+                                            className="
+                        w-full
+                        h-44
+                        object-cover
+                        rounded-xl
+                        mb-4
+                      "
                                         />
-                                        <h3 className="font-semibold text-gray-100 group-hover:text-[hsl(199,89%,58%)]">
+
+                                        <h3 className="
+                      text-lg
+                      font-semibold
+                      text-white
+                      group-hover:text-[hsl(199,89%,58%)]
+                      transition-colors
+                    ">
                                             {b.title}
                                         </h3>
-                                        <p className="text-sm text-gray-400">
+
+                                        <p className="text-sm text-gray-400 mt-2">
                                             {b.description}
                                         </p>
-                                    </a>
+                                    </Link>
                                 ))}
                             </div>
                         </section>
