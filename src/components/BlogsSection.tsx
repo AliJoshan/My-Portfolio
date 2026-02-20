@@ -1,49 +1,28 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useMemo } from "react";
 import { Calendar, ArrowRight } from "lucide-react";
-
-interface Blog {
-    title: string;
-    excerpt: string;
-    date: string;
-    slug: string;
-}
-
-const blogs: Blog[] = [
-    {
-        title: "What CS50 Taught Me About Thinking Like a Programmer",
-        excerpt:
-            "How Harvard's introductory CS course reshaped the way I approach problems — from debugging to algorithmic thinking.",
-        date: "Feb 10, 2026",
-        slug: "cs50-thinking-like-programmer",
-    },
-    {
-        title: "Why I Chose React Over Other Frameworks",
-        excerpt:
-            "A practical breakdown of my decision to invest deeply in React and the ecosystem that makes it powerful for front-end work.",
-        date: "Jan 25, 2026",
-        slug: "why-react-over-other-frameworks",
-    },
-    {
-        title: "Building in Public: Lessons From My First Portfolio",
-        excerpt:
-            "What I learned shipping a real project — from design decisions to deployment pitfalls and everything in between.",
-        date: "Jan 12, 2026",
-        slug: "building-in-public-first-portfolio",
-    },
-];
+import { getAllBlogs } from "../lib/blog";
+import type { BlogMeta } from "../lib/blog";
 
 const BlogsSection = () => {
+    const blogs = useMemo<BlogMeta[]>(() => getAllBlogs(), []);
     const ref = useRef<HTMLDivElement>(null);
     const [visible, setVisible] = useState(false);
 
     useEffect(() => {
         const observer = new IntersectionObserver(
-            ([entry]) => entry.isIntersecting && setVisible(true),
+            ([entry]) => {
+                if (entry.isIntersecting) setVisible(true);
+            },
             { threshold: 0.15 }
         );
 
-        if (ref.current) observer.observe(ref.current);
-        return () => observer.disconnect();
+        const element = ref.current;
+        if (element) observer.observe(element);
+
+        return () => {
+            if (element) observer.unobserve(element);
+            observer.disconnect();
+        };
     }, []);
 
     return (
@@ -79,12 +58,13 @@ const BlogsSection = () => {
                 transition-all duration-500 flex flex-col
                 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
                         >
-                            <div className="relative h-48 flex items-center justify-center overflow-hidden">
-                                <div className="absolute inset-0 bg-[radial-gradient(600px_circle_at_30%_30%,hsl(199_89%_58%/0.25),transparent_60%)]" />
-                                <div className="absolute inset-0 bg-black/50 group-hover:bg-black/30 transition-colors duration-500" />
-                                <span className="relative z-10 text-[hsl(199,89%,58%)] text-6xl font-bold opacity-30">
-                                    {idx + 1}
-                                </span>
+                            <div className="relative h-48 overflow-hidden">
+                                <img
+                                    src={blog.image}
+                                    alt={blog.title}
+                                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                />
+                                <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors duration-500" />
                             </div>
 
                             <div className="p-6 flex flex-col flex-1">
@@ -93,7 +73,7 @@ const BlogsSection = () => {
                                 </h3>
 
                                 <p className="text-gray-400 text-sm leading-relaxed mb-6 line-clamp-3 flex-1">
-                                    {blog.excerpt}
+                                    {blog.description}
                                 </p>
 
                                 <div className="flex items-center justify-between mt-auto">
