@@ -3,6 +3,13 @@ import { getBlogBySlug, getRelatedBlogs } from "../lib/blog";
 import ReadingProgress from "../components/ReadingProgress";
 import BlogContent from "../components/BlogContent";
 
+function calculateReadingTime(content: string) {
+    const words = content.trim().split(/\s+/).length;
+    const minutes = Math.ceil(words / 200);
+    return `${minutes} min read`;
+}
+
+
 const BlogPostPage = () => {
     const { slug } = useParams();
     const blog = slug ? getBlogBySlug(slug) : undefined;
@@ -23,22 +30,37 @@ const BlogPostPage = () => {
             <main className="min-h-screen bg-[hsl(222,47%,6%)]">
                 <div className="max-w-4xl mx-auto px-6 py-24">
 
-                    {/* Date */}
-                    <p className="text-sm text-gray-400 mb-4 tracking-wide">
-                        {blog.meta.date}
-                    </p>
+                    <Link
+                        to="/#blogs"
+                        className="
+      inline-flex items-center gap-2
+      text-sm text-gray-400
+      hover:text-[hsl(199,89%,58%)]
+      transition-colors
+      mb-8
+    "
+                    >
+                        ← Back to Blogs
+                    </Link>
 
-                    {/* Title */}
                     <h1 className="text-4xl sm:text-5xl font-bold text-white leading-tight mb-6">
                         {blog.meta.title}
                     </h1>
 
-                    {/* Description */}
                     {blog.meta.description && (
-                        <p className="text-lg text-gray-400 mb-12 max-w-2xl">
+                        <p className="text-lg text-gray-400 mb-6 max-w-2xl leading-relaxed">
                             {blog.meta.description}
                         </p>
                     )}
+
+                    <div className="flex items-center gap-6 text-sm text-gray-400 mb-16">
+                        <span className="flex items-center gap-2">
+                            📅 {blog.meta.date}
+                        </span>
+                        <span className="flex items-center gap-2">
+                            ⏱ {calculateReadingTime(blog.content)}
+                        </span>
+                    </div>
 
                     {/* Hero Image */}
                     {blog.meta.image && (
