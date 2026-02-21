@@ -97,13 +97,19 @@ const Hero: React.FC = () => {
                     <div
                         className={`flex gap-4 justify-center lg:justify-start transform transition-all duration-700 delay-700 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
                     >
-                        <button className="px-6 py-3 rounded-lg bg-[hsl(199,89%,58%)] text-[hsl(222,47%,6%)] font-medium transition hover:opacity-90">
+                        <a
+                            href="#projects"
+                            className="px-6 py-3 rounded-lg bg-[hsl(199,89%,58%)] text-[hsl(222,47%,6%)] font-medium transition hover:opacity-90"
+                        >
                             View My Work
-                        </button>
+                        </a>
 
-                        <button className="px-6 py-3 rounded-lg border border-[hsl(199,89%,58%)] text-[hsl(199,89%,58%)] font-medium transition hover:bg-[hsl(199,89%,58%)] hover:text-[hsl(222,47%,6%)]">
+                        <a
+                            href="#contact"
+                            className="px-6 py-3 rounded-lg border border-[hsl(199,89%,58%)] text-[hsl(199,89%,58%)] font-medium transition hover:bg-[hsl(199,89%,58%)] hover:text-[hsl(222,47%,6%)]"
+                        >
                             Contact Me
-                        </button>
+                        </a>
                     </div>
                 </div>
 
