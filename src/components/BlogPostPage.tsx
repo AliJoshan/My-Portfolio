@@ -43,7 +43,7 @@ const BlogPostPage = () => {
                         ← Back to Blogs
                     </Link>
 
-                    <h1 className="text-4xl sm:text-5xl font-bold text-white leading-tight mb-6">
+                    <h1 className="text-4xl sm:text-5xl font-bold text-white tracking-tight">
                         {blog.meta.title}
                     </h1>
 
@@ -62,27 +62,37 @@ const BlogPostPage = () => {
                         </span>
                     </div>
 
-                    {/* Hero Image */}
                     {blog.meta.image && (
-                        <div className="mb-16">
+                        <div className="relative mb-20 flex justify-center">
+                            {/* Glow */}
+                            <div className="
+      absolute
+      -inset-10
+      bg-[radial-gradient(circle_at_center,hsl(199,89%,58%,0.15),transparent_70%)]
+      blur-3xl
+      opacity-60
+    " />
+
                             <img
                                 src={blog.meta.image}
                                 alt={blog.meta.title}
                                 className="
-                  w-full
-                  rounded-2xl
-                  border border-white/5
-                  shadow-xl
-                  object-cover
-                "
+        relative
+        w-full
+        max-w-3xl
+        h-72 sm:h-80
+        object-cover
+        rounded-2xl
+        border border-white/5
+        shadow-lg
+      "
                             />
                         </div>
                     )}
 
-                    {/* Content */}
+
                     <BlogContent content={blog.content} />
 
-                    {/* Related Articles */}
                     {related.length > 0 && (
                         <section className="mt-24 border-t border-white/5 pt-16">
                             <h2 className="text-2xl font-semibold text-white mb-10">
