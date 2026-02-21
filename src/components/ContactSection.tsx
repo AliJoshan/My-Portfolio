@@ -1,10 +1,27 @@
 import { useEffect, useRef, useState } from "react";
-import { Mail, Linkedin, Github } from "lucide-react";
+import { Mail, Linkedin, Github, Instagram } from "lucide-react";
 
 const contacts = [
-    { icon: Mail, label: "Email", href: "mailto:hello@example.com" },
-    { icon: Linkedin, label: "LinkedIn", href: "https://linkedin.com" },
-    { icon: Github, label: "GitHub", href: "https://github.com" },
+    {
+        icon: Mail,
+        label: "Email",
+        href: "mailto:alijoshan369@gmail.com",
+    },
+    {
+        icon: Linkedin,
+        label: "LinkedIn",
+        href: "https://www.linkedin.com/in/ali-anas-joshan-120365334/",
+    },
+    {
+        icon: Github,
+        label: "GitHub",
+        href: "https://github.com/AliJoshan",
+    },
+    {
+        icon: Instagram,
+        label: "Instagram",
+        href: "https://www.instagram.com/ali_j0shan/",
+    },
 ];
 
 const ContactSection = () => {
@@ -51,23 +68,22 @@ const ContactSection = () => {
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
                     {contacts.map((contact, idx) => {
                         const Icon = contact.icon;
+                        const isMail = contact.label === "Email";
+
                         return (
                             <a
                                 key={contact.label}
                                 href={contact.href}
-                                target="_blank"
-                                rel="noopener noreferrer"
+                                {...(!isMail && { target: "_blank", rel: "noopener noreferrer" })}
+                                aria-label={`Open ${contact.label}`}
                                 style={{ transitionDelay: `${300 + idx * 100}ms` }}
                                 className={`group flex items-center gap-3 px-7 py-4 rounded-xl
-                  bg-[hsl(222,44%,9%)]
-                  border border-white/5
-                  hover:border-[hsl(199,89%,58%)]/40
-                  hover:shadow-[0_0_32px_hsl(199_89%_58%/0.15)]
-                  transition-all duration-500
-                  ${visible
-                                        ? "opacity-100 translate-y-0"
-                                        : "opacity-0 translate-y-8"
-                                    }`}
+        bg-[hsl(222,44%,9%)]
+        border border-white/5
+        hover:border-[hsl(199,89%,58%)]/40
+        hover:shadow-[0_0_32px_hsl(199_89%_58%/0.15)]
+        transition-all duration-500
+        ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
                             >
                                 <Icon
                                     size={20}
