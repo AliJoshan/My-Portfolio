@@ -12,7 +12,7 @@ interface Project {
     image: string;
     tags: string[];
     liveUrl?: string;
-    githubUrl: string;
+    githubUrl?: string;
     overview: string;
     features: string[];
     challenges: string;
@@ -25,7 +25,7 @@ const projects: Project[] = [
             "A progress tracking web app that helps users measure growth through a visual dashboard.",
         image: progressionImg,
         tags: ["HTML", "CSS", "JavaScript"],
-        githubUrl: "#",
+        githubUrl: "https://github.com/AliJoshan/Progression",
         overview:
             "Progression is a front-end focused progress tracker built with vanilla web technologies. It allows users to track habits or goals over time using a clean dashboard-style UI.",
         features: [
@@ -43,7 +43,7 @@ const projects: Project[] = [
             "A modern job board platform that fetches and displays job listings from an external API.",
         image: careerHubImg,
         tags: ["React", "TypeScript", "Tailwind CSS", "API"],
-        githubUrl: "#",
+        githubUrl: "https://github.com/AliJoshan/CareerHub",
         overview:
             "CareerHub is a job board application built with React and TypeScript. It consumes an external API to display real-time job listings with clean UI, filtering, and structured job details.",
         features: [
@@ -61,7 +61,7 @@ const projects: Project[] = [
             "An interactive quiz game that fetches questions dynamically from an API.",
         image: quizGameImg,
         tags: ["React", "Tailwind CSS", "API"],
-        githubUrl: "#",
+        githubUrl: undefined,
         overview:
             "A fun and interactive quiz game built with React. Questions are fetched dynamically from an external API, allowing for varied quiz sessions every time.",
         features: [
@@ -188,20 +188,44 @@ const ProjectsSection = () => {
                                 </div>
 
                                 <div className="flex gap-4 text-sm">
-                                    <a
-                                        href={project.liveUrl}
-                                        onClick={(e) => e.stopPropagation()}
-                                        className="flex items-center gap-1.5 text-[hsl(199,89%,58%)] hover:opacity-80 transition"
-                                    >
-                                        <ExternalLink size={14} /> Live Demo
-                                    </a>
-                                    <a
-                                        href={project.githubUrl}
-                                        onClick={(e) => e.stopPropagation()}
-                                        className="flex items-center gap-1.5 text-gray-400 hover:text-[hsl(199,89%,58%)] transition"
-                                    >
-                                        <Github size={14} /> Code
-                                    </a>
+                                    {project.liveUrl ? (
+                                        <a
+                                            href={project.liveUrl}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            onClick={(e) => e.stopPropagation()}
+                                            className="flex items-center gap-1.5 text-[hsl(199,89%,58%)] hover:opacity-80 transition"
+                                        >
+                                            <ExternalLink size={14} /> Live Demo
+                                        </a>
+                                    ) : (
+                                        <div
+                                            onClick={(e) => e.stopPropagation()}
+                                            className="flex items-center gap-1.5 text-gray-500 cursor-not-allowed"
+                                            title="Live demo not available"
+                                        >
+                                            <ExternalLink size={14} /> Live Demo
+                                        </div>
+                                    )}
+                                    {project.githubUrl ? (
+                                        <a
+                                            href={project.githubUrl}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            onClick={(e) => e.stopPropagation()}
+                                            className="flex items-center gap-1.5 text-gray-400 hover:text-[hsl(199,89%,58%)] transition"
+                                        >
+                                            <Github size={14} /> Code
+                                        </a>
+                                    ) : (
+                                        <div
+                                            onClick={(e) => e.stopPropagation()}
+                                            className="flex items-center gap-1.5 text-gray-500 cursor-not-allowed"
+                                            title="Source code not available"
+                                        >
+                                            <Github size={14} /> Code
+                                        </div>
+                                    )}
                                 </div>
                             </div>
                         </div>
@@ -277,12 +301,24 @@ const ProjectsSection = () => {
                                         Live demo coming soon
                                     </div>
                                 )}
-                                <a
-                                    href={selected.githubUrl}
-                                    className="px-5 py-2.5 rounded-lg border border-white/10 text-gray-100 text-sm font-medium hover:border-[hsl(199,89%,58%)] transition"
-                                >
-                                    GitHub
-                                </a>
+                                {selected.githubUrl ? (
+                                    <a
+                                        href={selected.githubUrl}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="px-5 py-2.5 rounded-lg border border-white/10 text-gray-100 text-sm font-medium hover:border-[hsl(199,89%,58%)] transition"
+                                    >
+                                        GitHub
+                                    </a>
+                                ) : (
+                                    <div
+                                        className="px-5 py-2.5 rounded-lg bg-white/5 border border-white/10
+        text-gray-400 text-sm cursor-not-allowed"
+                                        title="Source code not available"
+                                    >
+                                        GitHub
+                                    </div>
+                                )}
                                 <button
                                     onClick={closeModal}
                                     className="ml-auto text-gray-400 hover:text-gray-100 transition text-sm"
