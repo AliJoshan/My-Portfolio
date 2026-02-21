@@ -20,7 +20,7 @@ const AboutSection = () => {
         <section
             id="about"
             ref={ref}
-            className="py-28 bg-[hsl(222,47%,6%)]"
+            className="py-28 section-gradient"
         >
             <div className="max-w-3xl mx-auto px-6">
                 {/* Title */}

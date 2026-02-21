@@ -58,7 +58,7 @@ const SkillsSection = () => {
     }, []);
 
     return (
-        <section id="skills" ref={ref} className="py-28 section-gradient">
+        <section id="skills" ref={ref} className="py-28 bg-[hsl(222,47%,6%)]">
             <div className="max-w-5xl mx-auto px-6">
                 <h2
                     className={`text-3xl sm:text-4xl font-bold text-center text-gray-100 mb-2 transition-all duration-700 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
