@@ -48,7 +48,7 @@ const AboutSection = () => {
                     </p>
 
                     <p className="text-gray-400 leading-relaxed mb-5">
-                        I’m currently a second-semester BCS student at Moraa Education Complex, strengthening my academic foundation in computer science while continuing practical development.
+                        I’m currently a second-semester BCS student at Moraa University, strengthening my academic foundation in computer science while continuing practical development.
                     </p>
 
                     <p className="text-gray-400 leading-relaxed">
