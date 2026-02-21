@@ -11,7 +11,7 @@ interface Project {
     description: string;
     image: string;
     tags: string[];
-    liveUrl: string;
+    liveUrl?: string;
     githubUrl: string;
     overview: string;
     features: string[];
@@ -25,7 +25,6 @@ const projects: Project[] = [
             "A progress tracking web app that helps users measure growth through a visual dashboard.",
         image: progressionImg,
         tags: ["HTML", "CSS", "JavaScript"],
-        liveUrl: "#",
         githubUrl: "#",
         overview:
             "Progression is a front-end focused progress tracker built with vanilla web technologies. It allows users to track habits or goals over time using a clean dashboard-style UI.",
@@ -44,7 +43,6 @@ const projects: Project[] = [
             "A modern job board platform that fetches and displays job listings from an external API.",
         image: careerHubImg,
         tags: ["React", "TypeScript", "Tailwind CSS", "API"],
-        liveUrl: "#",
         githubUrl: "#",
         overview:
             "CareerHub is a job board application built with React and TypeScript. It consumes an external API to display real-time job listings with clean UI, filtering, and structured job details.",
@@ -63,7 +61,6 @@ const projects: Project[] = [
             "An interactive quiz game that fetches questions dynamically from an API.",
         image: quizGameImg,
         tags: ["React", "Tailwind CSS", "API"],
-        liveUrl: "#",
         githubUrl: "#",
         overview:
             "A fun and interactive quiz game built with React. Questions are fetched dynamically from an external API, allowing for varied quiz sessions every time.",
@@ -86,7 +83,7 @@ const ProjectsSection = () => {
 
     const closeModal = () => {
         setShowModal(false);
-        setTimeout(() => setSelected(null), 300); // match transition duration
+        setTimeout(() => setSelected(null), 300);
     };
 
 
@@ -262,12 +259,24 @@ const ProjectsSection = () => {
                             </p>
 
                             <div className="flex gap-4">
-                                <a
-                                    href={selected.liveUrl}
-                                    className="px-5 py-2.5 rounded-lg bg-[hsl(199,89%,58%)] text-[hsl(222,47%,6%)] text-sm font-medium hover:opacity-90 transition"
-                                >
-                                    Live Demo
-                                </a>
+                                {selected.liveUrl ? (
+                                    <a
+                                        href={selected.liveUrl}
+                                        className="px-5 py-2.5 rounded-lg bg-[hsl(199,89%,58%)]
+        text-[hsl(222,47%,6%)] text-sm font-medium hover:opacity-90 transition"
+                                    >
+                                        Live Demo
+                                    </a>
+                                ) : (
+                                    <div
+                                        className="px-5 py-2.5 rounded-lg
+        bg-white/5 border border-white/10
+        text-gray-400 text-sm cursor-not-allowed"
+                                        title="Live demo will be available in the future"
+                                    >
+                                        Live demo coming soon
+                                    </div>
+                                )}
                                 <a
                                     href={selected.githubUrl}
                                     className="px-5 py-2.5 rounded-lg border border-white/10 text-gray-100 text-sm font-medium hover:border-[hsl(199,89%,58%)] transition"

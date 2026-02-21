@@ -64,7 +64,6 @@ const ContactSection = () => {
                     opportunities.
                 </p>
 
-                {/* Contact cards */}
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
                     {contacts.map((contact, idx) => {
                         const Icon = contact.icon;
