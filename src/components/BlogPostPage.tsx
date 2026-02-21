@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+import BlogPostSkeleton from "../components/BlogPostSkeleton";
 import { useParams, Link } from "react-router-dom";
 import { getBlogBySlug, getRelatedBlogs } from "../lib/blog";
 import ReadingProgress from "../components/ReadingProgress";
@@ -13,6 +15,19 @@ function calculateReadingTime(content: string) {
 const BlogPostPage = () => {
     const { slug } = useParams();
     const blog = slug ? getBlogBySlug(slug) : undefined;
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setLoading(false);
+        }, 300);
+
+        return () => clearTimeout(timer);
+    }, [slug]);
+
+    if (loading) {
+        return <BlogPostSkeleton />;
+    }
 
     if (!blog)
         return (
@@ -135,7 +150,7 @@ const BlogPostPage = () => {
                                             {/* Dark overlay */}
                                             <div className="
                             absolute inset-0
-                            bg-gradient-to-t
+                            bg-linear-to-t
                             from-black/80
                             via-black/40
                             to-transparent
