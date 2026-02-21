@@ -22,6 +22,7 @@ const BlogPostPage = () => {
         );
 
     const related = getRelatedBlogs(blog.meta.slug);
+    const moreArticles = getRelatedBlogs(blog.meta.slug, 2);
 
     return (
         <>
@@ -141,6 +142,78 @@ const BlogPostPage = () => {
                                         <p className="text-sm text-gray-400 mt-2">
                                             {b.description}
                                         </p>
+                                    </Link>
+                                ))}
+                            </div>
+                        </section>
+                    )}
+
+                    {moreArticles.length > 0 && (
+                        <section className="mt-32">
+                            <h2 className="text-3xl font-semibold text-white mb-12">
+                                More Articles
+                            </h2>
+
+                            <div className="grid md:grid-cols-2 gap-12">
+                                {moreArticles.map((b) => (
+                                    <Link
+                                        key={b.slug}
+                                        to={`/blog/${b.slug}`}
+                                        className="
+                        group
+                        relative
+                        rounded-3xl
+                        overflow-hidden
+                        border
+                        border-white/5
+                        bg-[hsl(222,44%,8%)]
+                        transition-all
+                        duration-500
+                        hover:border-[hsl(199,89%,58%)]
+                    "
+                                    >
+                                        {/* Image */}
+                                        <div className="relative h-56">
+                                            <img
+                                                src={b.image}
+                                                alt={b.title}
+                                                className="
+                                absolute inset-0
+                                w-full h-full
+                                object-cover
+                                opacity-80
+                                group-hover:opacity-100
+                                transition-opacity
+                            "
+                                            />
+
+                                            {/* Dark overlay */}
+                                            <div className="
+                            absolute inset-0
+                            bg-gradient-to-t
+                            from-black/80
+                            via-black/40
+                            to-transparent
+                        " />
+                                        </div>
+
+                                        {/* Content */}
+                                        <div className="p-6">
+                                            <h3 className="
+                            text-xl
+                            font-semibold
+                            text-white
+                            mb-2
+                            group-hover:text-[hsl(199,89%,58%)]
+                            transition-colors
+                        ">
+                                                {b.title}
+                                            </h3>
+
+                                            <p className="text-sm text-gray-400 leading-relaxed">
+                                                {b.description}
+                                            </p>
+                                        </div>
                                     </Link>
                                 ))}
                             </div>
