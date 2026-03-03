@@ -40,6 +40,12 @@ More importantly, CS50 didn’t just teach syntax — it trained me to think lik
 
 That experience shifted my mindset from curiosity to commitment.
 
+### CS50 Certificate
+
+To validate this milestone, here is my official certificate issued by Harvard University:
+
+[View Official CS50 Certificate (PDF) →](https://certificates.cs50.io/75102987-9d4e-457a-a284-e3683a03e7ae.pdf?size=letter)
+
 ---
 
 ## Moving Into Software Engineering
