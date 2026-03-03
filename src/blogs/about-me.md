@@ -61,6 +61,21 @@ Every project I build is part of a long-term strategy: developing technical dept
 
 ---
 
+## Current Technical Focus
+
+As of now, I have completed a structured and in-depth front-end development phase. My foundation in modern front-end engineering is solid, particularly within the React ecosystem.
+
+I am comfortable building production-level user interfaces with:
+- JavaScript (ES6+)
+- TypeScript
+- React and modern state management patterns
+- Component architecture and reusability
+- API integration
+- Responsive design and clean UI structure
+
+At the same time, I am actively expanding into back-end engineering. I am currently learning server-side development, databases, and system architecture with the goal of becoming a well-rounded full-stack engineer.
+
+
 ## Looking Forward
 
 This is still the early chapter of my story. There will be setbacks, pivots, and challenges — and that is expected. Growth in engineering is nonlinear.
