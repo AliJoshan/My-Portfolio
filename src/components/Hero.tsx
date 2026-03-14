@@ -118,7 +118,7 @@ const Hero: React.FC = () => {
                     <div className="absolute inset-0 rounded-full blur-2xl bg-[hsl(199,89%,58%)]/20 animate-pulse" />
                     <div className="relative w-60 h-60 sm:w-72 sm:h-72 lg:w-88 lg:h-88 rounded-full overflow-hidden border-4 border-[hsl(199,89%,58%)]/30">
                         <img
-                            src="src/assets/images/Me.jpeg"
+                            src="/images/Me.jpeg"
                             alt="Ali Anas Joshan"
                             className="w-full h-full object-cover"
                         />
