@@ -1,73 +1,48 @@
-# React + TypeScript + Vite
+# Portfolio Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to my personal portfolio website! This project showcases my skills, projects, and experience as a [Frontend Developer / Software Engineer / Your Role].
 
-Currently, two official plugins are available:
+## 🌟 Live Demo
+Check out the live website here: https://my-portfolio-two-pi-58.vercel.app/
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 💡 Overview
+This portfolio website is designed to highlight my projects, skills, and experience in a clean and interactive way. It serves as a central hub for potential employers, collaborators, and clients to learn more about me and my work.
 
-## React Compiler
+## 🔹 Features
+- Responsive design for mobile, tablet, and desktop
+- Projects section with live demo links
+- About me section with personal introduction
+- Contact form for direct messages
+- Smooth animations and transitions
+- Easy navigation with sticky navbar
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🛠 Technologies Used
+- **Frontend:** React, TypeScript, Tailwind CSS
+- **Hosting / Deployment:** Vercel
+- **Other Tools:** Framer Motion (animations), React Icons
 
-## Expanding the ESLint configuration
+## 🚀 Projects Highlighted
+### 1. Progression
+- Live Demo: [Progression](https://progression-psi.vercel.app/)
+- Description: A web app to track personal growth and goals, with analytics and insights.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### 2. CareerHub
+- Live Demo: [CareerHub](https://career-hub-two-sigma.vercel.app/)
+- Description: A platform to find and explore job opportunities with easy search and filtering options.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## 📝 How to Run Locally
+If you want to clone and run this project locally:
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+```bash
+# Clone the repository
+git clone https://github.com/AliJoshan/portfolio.git
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+# Navigate into the project folder
+cd portfolio
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+# Install dependencies
+npm install
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+# Run the development server
+npm run dev
