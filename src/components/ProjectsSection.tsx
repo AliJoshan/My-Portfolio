@@ -26,6 +26,7 @@ const projects: Project[] = [
         image: progressionImg,
         tags: ["HTML", "CSS", "JavaScript"],
         githubUrl: "https://github.com/AliJoshan/Progression",
+        liveUrl: "https://progression-psi.vercel.app/",
         overview:
             "Progression is a front-end focused progress tracker built with vanilla web technologies. It allows users to track habits or goals over time using a clean dashboard-style UI.",
         features: [
@@ -44,6 +45,7 @@ const projects: Project[] = [
         image: careerHubImg,
         tags: ["React", "TypeScript", "Tailwind CSS", "API"],
         githubUrl: "https://github.com/AliJoshan/CareerHub",
+        liveUrl: "https://career-hub-two-sigma.vercel.app/",
         overview:
             "CareerHub is a job board application built with React and TypeScript. It consumes an external API to display real-time job listings with clean UI, filtering, and structured job details.",
         features: [
