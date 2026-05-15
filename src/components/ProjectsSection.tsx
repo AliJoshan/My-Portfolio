@@ -269,11 +269,17 @@ const ProjectsSection = () => {
         >
           <div
             onClick={(e) => e.stopPropagation()}
-            className={`max-w-2xl w-full bg-[hsl(222,44%,9%)]
-        border border-white/5 rounded-2xl overflow-hidden
-        transform transition-all duration-300
-        ${showModal ? "scale-100 translate-y-0 opacity-100" : "scale-95 translate-y-4 opacity-0"}
-      `}
+            className={`max-w-2xl w-full
+bg-[hsl(222,44%,9%)]
+border border-white/5 rounded-2xl
+max-h-[90vh] overflow-y-auto
+scrollbar-thin
+scrollbar-thumb-white/10
+hover:scrollbar-thumb-white/20
+scrollbar-track-transparent
+transform transition-all duration-300
+${showModal ? "scale-100 translate-y-0 opacity-100" : "scale-95 translate-y-4 opacity-0"}
+`}
           >
             <img
               src={selected.image}
