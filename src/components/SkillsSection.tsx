@@ -23,13 +23,30 @@ const categories = [
       { name: "TypeScript", icon: Code2 },
       { name: "React", icon: Atom },
       { name: "Next.js", icon: Atom },
-      { name: "Tailwind", icon: Zap },
+      { name: "Tailwind CSS", icon: Zap },
     ],
   },
+
   {
-    title: "Programming",
-    skills: [{ name: "Python", icon: Terminal }],
+    title: "Back-End",
+    skills: [
+      { name: "Node.js", icon: Terminal },
+      { name: "Express.js", icon: Globe },
+      { name: "REST APIs", icon: Globe },
+      { name: "JWT Authentication", icon: Code2 },
+      { name: "Middleware", icon: Braces },
+    ],
   },
+
+  {
+    title: "Databases",
+    skills: [
+      { name: "PostgreSQL", icon: Terminal },
+      { name: "Prisma ORM", icon: Code2 },
+      { name: "SQL", icon: Braces },
+    ],
+  },
+
   {
     title: "Tools",
     skills: [
@@ -37,7 +54,6 @@ const categories = [
       { name: "GitHub", icon: Github },
       { name: "Vite", icon: Zap },
       { name: "Figma", icon: Figma },
-      { name: "REST APIs", icon: Globe },
     ],
   },
 ];
